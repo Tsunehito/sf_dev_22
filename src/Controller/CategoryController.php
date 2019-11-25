@@ -79,6 +79,17 @@ class CategoryController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/delete", name="category_confirm_delete", methods={"GET"})
+     */
+    public function confirm_delete(Request $request, Category $category): Response
+    {
+        return $this->render('category/delete.html.twg', [
+            'category' => $category
+        ]);
+    }
+
+    
+    /**
      * @Route("/{id}", name="category_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Category $category): Response
@@ -91,4 +102,5 @@ class CategoryController extends AbstractController
 
         return $this->redirectToRoute('category_index');
     }
+
 }

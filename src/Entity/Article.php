@@ -27,7 +27,7 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", option={"default"="CURRENT_TIMESTAMP"})
      */
     private $created_at;
 
@@ -36,6 +36,11 @@ class Article
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->created_at = new \Datetime();
+    }
 
     public function getId(): ?int
     {
