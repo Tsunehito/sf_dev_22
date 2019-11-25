@@ -77,6 +77,16 @@ class ArticleController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
+    /**
+     * @Route("/{id}/delete", name="article_confirm_delete", methods={"GET"})
+     */
+    public function confirm_delete(Request $request, Article $article): Response
+    {
+        return $this->render('article/delete.html.twg', [
+            'article' => $article
+        ]);
+    }
 
     /**
      * @Route("/{id}", name="article_delete", methods={"DELETE"})
